@@ -17,6 +17,7 @@ public class CollectionControl {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+
         do {
 
             System.out.print("Ввод: ");
@@ -27,7 +28,7 @@ public class CollectionControl {
 
             switch (lineIn) {
                 case "help": {
-                    HelpRead(lineIn);
+//                    HelpRead(lineIn);
                     break;
                 }
                 case "info": {
@@ -62,7 +63,7 @@ public class CollectionControl {
                 }
             }
 
-        } while ()
+        } while (true);
     }
 
     public static void HelpRead(String args) throws IOException {
