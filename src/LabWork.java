@@ -26,8 +26,6 @@ public class LabWork {
         INSANE;
     }
 
-
-
     // Getters
     public Integer getID() { return id; }
     public String getName() {
@@ -39,6 +37,10 @@ public class LabWork {
 
     public int generateID() {
         return ThreadLocalRandom.current().nextInt();
+    }
+
+    public boolean checkID() {
+        return ;
     }
 
 
