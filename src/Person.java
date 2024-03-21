@@ -5,15 +5,8 @@ public class Person {
     private String passportID;
 
     public Person(String name, String passportID) {
-        try {
-            // Устанавливаем имя, проверяем на корректность
-            setName(name);
-            // Устанавливаем номер паспорта
-            this.passportID = passportID;
-        } catch (IllegalArgumentException e) {
-            // Если возникла ошибка, выводим сообщение об ошибке
-            System.err.println(e.getMessage());
-        }
+        setName(name);
+        this.passportID = passportID;
     }
 
     // Геттер для имени
@@ -31,6 +24,11 @@ public class Person {
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    public void validateName(String name) throws Exception {
+        if (name == null || name.isEmpty())
+            throw new Exception("Введенное значение поля Имя не соответствует требованиям");
     }
 
     // Геттер для номера паспорта

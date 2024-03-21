@@ -10,6 +10,14 @@ public class LabWork {
     private Difficulty difficulty; //Поле не может быть null
     private Person author; //Поле может быть null
 
+    public LabWork() {
+        this.id = 0;
+        this.name = "name";
+        this.minimalPoint = 1;
+        this.difficulty = Difficulty.VERY_EASY;
+        this.author = new Person("name","0");
+    }
+
     public enum Difficulty {
         VERY_EASY,
         EASY,
@@ -17,6 +25,8 @@ public class LabWork {
         VERY_HARD,
         INSANE;
     }
+
+
 
     // Getters
     public Integer getID() { return id; }
@@ -30,6 +40,8 @@ public class LabWork {
     public int generateID() {
         return ThreadLocalRandom.current().nextInt();
     }
+
+
     // Setters
 
 
