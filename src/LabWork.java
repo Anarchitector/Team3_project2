@@ -39,75 +39,30 @@ public class LabWork {
         return ThreadLocalRandom.current().nextInt();
     }
 
-    public boolean checkID() {
-        return ;
-    }
-
-
     // Setters
+    public void setID(Integer id) { this.id = id; }
+    public void setName(String name) { this.name = name; }
+    public void setMinimalPoint(Integer minimalPoint) { this.minimalPoint = minimalPoint; }
+    public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
+    public void setAuthor(Person author) { this.author = author; }
 
-
-    public void setID(Integer id) {
-        try {
-            if (id == null || id <= 0 ) {
-
-            }
-        }
-        catch (IllegalArgumentException e){
-            System.err.println("Проверьте значение поля ID на соответствие требованиям задания");
-        }
-
+    //Validators
+    public void validate(Integer id) throws Exception{
+        if (id == null || id <=0)
+            throw new Exception("Введенное значение поля ID не соответствует требованиям");
     }
 
-    public void setName(String name) {
-        try {
-            if (name == null || name.isEmpty()) {
-                throw new IllegalArgumentException("Поле Name не может быть нулевым или пустым");
-            }
-            this.name = name;
-        } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-        }
+    public void validate(String name) throws Exception{
+        if (name == null || name.isEmpty())
+            throw new Exception("Введенное значение поля ID не соответствует требованиям");
+    }
+    public void validate(Difficulty difficulty) throws Exception{
+        if (difficulty == null)
+            throw new Exception("Поле не может быть null");
     }
 
-    public void setMinimalPoint(Integer minimalPoint) {
-        try {
-            if (minimalPoint == null || minimalPoint <= 0) {
-                throw new IllegalArgumentException("Поле Minimal Point не может быть пустым, а также меньше либо равным нулю");
-            }
-            this.minimalPoint = minimalPoint;
-        }
-        catch (IllegalArgumentException e){
-            System.err.println(e.getMessage());
-        }
+    public void validate(Person author) throws Exception{
+        if (author == null)
+            throw new Exception("Поле не может быть null");
     }
-
-    public void setDifficulty(Difficulty difficulty) {
-        try {
-            if (id == null) {
-                throw new IllegalArgumentException("Поле Difficulty не может быть пустым");
-            }
-            this.difficulty = difficulty;
-        }
-        catch (IllegalArgumentException e){
-            System.err.println(e.getMessage());
-        }
-    }
-
-    public void setAuthor(Person author) {
-        try {
-            if (minimalPoint == null) {
-                throw new IllegalArgumentException("Объект author не может быть пустым");
-            }
-            this.author = author;
-        }
-        catch (IllegalArgumentException e){
-            System.err.println(e.getMessage());
-        }
-    }
-
-
-
-
-
 }
