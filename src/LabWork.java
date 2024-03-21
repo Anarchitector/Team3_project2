@@ -1,3 +1,4 @@
+import javax.lang.model.element.VariableElement;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class LabWork {
@@ -5,17 +6,25 @@ public class LabWork {
     private Integer id;
     //Поле не может быть null, Значение поля должно быть больше 0,
     //Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    private String name; //Поле не может быть null, Строка не может быть пустой
+    private String labName; //Поле не может быть null, Строка не может быть пустой
     private Integer minimalPoint; //Поле не может быть null, Значение поля должно быть больше 0
     private Difficulty difficulty; //Поле не может быть null
     private Person author; //Поле может быть null
 
     public LabWork() {
         this.id = 0;
-        this.name = "name";
+        this.labName = "name";
         this.minimalPoint = 1;
         this.difficulty = Difficulty.VERY_EASY;
         this.author = new Person("name","0");
+    }
+
+    public LabWork(int id, String labName, int minimalPoint, Difficulty difficulty, Person author) {
+        this.id = id;
+        this.labName = labName;
+        this.minimalPoint = minimalPoint;
+        this.difficulty = difficulty;
+        this.author = author;
     }
 
     public enum Difficulty {
@@ -28,8 +37,8 @@ public class LabWork {
 
     // Getters
     public Integer getID() { return id; }
-    public String getName() {
-        return name;
+    public String getLabName() {
+        return labName;
     }
     public Integer getMinimalPoint() { return minimalPoint; }
     public Difficulty getDifficulty() { return difficulty; }
@@ -41,7 +50,7 @@ public class LabWork {
 
     // Setters
     public void setID(Integer id) { this.id = id; }
-    public void setName(String name) { this.name = name; }
+    public void setLabName(String name) { this.labName = name; }
     public void setMinimalPoint(Integer minimalPoint) { this.minimalPoint = minimalPoint; }
     public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
     public void setAuthor(Person author) { this.author = author; }

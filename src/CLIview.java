@@ -1,10 +1,15 @@
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CLIview {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
+        List<LabWork> books = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
+        Controller controller = new Controller();
 
         do {
 
@@ -16,7 +21,7 @@ public class CLIview {
 
             switch (lineIn) {
                 case "help": {
-//                    HelpRead(lineIn);
+                    controller.HelpRead(lineIn);
                     break;
                 }
                 case "info": {
