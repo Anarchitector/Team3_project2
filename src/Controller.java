@@ -10,19 +10,19 @@ import java.util.List;
 
 class Controller {
 
-    private List<LabWork> LabWorkList = new ArrayList<>();
+    private List<LabWork> labWorkList = new ArrayList<>();
 
 
     public void addLabWork(int id, String labName, int minimalPoint, LabWork.Difficulty difficulty, Person author) {
-        LabWorkList.add(new LabWork(id, labName, minimalPoint, difficulty, author));
+        labWorkList.add(new LabWork(id, labName, minimalPoint, difficulty, author));
     }
 //?
     public void removeLabWorkById(int id) {
-        LabWorkList.remove(id);
+        labWorkList.remove(id);
     }
 
     public void clearLabWorkList() {
-        LabWorkList.clear();
+        labWorkList.clear();
     }
 
 
@@ -33,6 +33,16 @@ class Controller {
         String line;
         while ((line = fin.readLine()) != null) System.out.println(line);
     }
+    // Метод для вывода информации о коллекции
+    public void info() {
+        System.out.println("Тип коллекции: ArrayList<LabWork>");
+        System.out.println("Количество элементов: " + labWorkList.size());
+    }
 
-
+    // Метод для вывода всех элементов коллекции
+        public void show() {
+        for (LabWork labWork : labWorkList) {
+            System.out.println(labWork);
+        }
+    }
 }
