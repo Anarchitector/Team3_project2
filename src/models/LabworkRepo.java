@@ -19,7 +19,7 @@ public class LabworkRepo {
         map.put(labwork.getId(), labwork);
     }
 
-    public Labwork getById(Long id) {
+    public Labwork getById(int id) {
         return map.get(id);
     }
 
@@ -27,11 +27,11 @@ public class LabworkRepo {
         return this.map.size();
     }
 
-    public boolean containsKey(long idValue) {
+    public boolean containsKey(int idValue) {
         return this.map.containsKey(idValue);
     }
 
-    public void remove(long idValue) {
+    public void remove(int idValue) {
         this.map.remove(idValue);
     }
 

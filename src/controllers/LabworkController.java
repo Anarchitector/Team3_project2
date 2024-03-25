@@ -16,7 +16,7 @@ public class LabworkController {
     private final CsvFileRepo fileRepo;
     Scanner scanner;
 
-    public LabworkController(String filepath) {// конструктор
+    public LabworkController(String filepath) {
         this.labworkRepo = new LabworkRepo();
         this.fileRepo = new CsvFileRepo(filepath);
         this.scanner = new Scanner(System.in);
@@ -26,6 +26,10 @@ public class LabworkController {
     public void handleSaveCommand() {
         Collection<Labwork> labworkList = this.labworkRepo.getValues();
         this.fileRepo.save(labworkList);
+    }
+
+    public void handleClearCommand() {
+        this.labworkRepo.clear();
     }
 
     private void loadFile() {
@@ -38,27 +42,20 @@ public class LabworkController {
     public Collection<Labwork> handleShowCommand() {
         return this.labworkRepo.getValues();
     }
-/*
-    public void addLabWork(int id, String labName, int minimalPoint, LabWork.Difficulty difficulty, models.Labwork.Person author) {
-        labWorkList.add(new LabWork(id, labName, minimalPoint, difficulty, author));
-    }
-//?
-    public void removeLabWorkById(int id) {
-        labWorkList.remove(id);
+
+//    public void handleAddCommand(int id, String labName, int minimalPoint, models.Labwork.Difficulty difficulty, models.Person author) {
+public void handleAddCommand(int id, String labName, int minimalPoint, models.Labwork.Difficulty difficulty, String author) {
+        this.labworkRepo.add(new Labwork(id, labName, minimalPoint, difficulty, author));
     }
 
-    public void clearLabWorkList() {
-        labWorkList.clear();
-    }
-*/
-
-
-    public void HelpRead(String args) throws IOException {
-        File f = new File("/home/igor/Projects/Team3_project/src/help.txt");
+    public void HelpRead() throws IOException {
+        File f = new File("help.txt");
         BufferedReader fin = new BufferedReader(new FileReader(f));
         String line;
         while ((line = fin.readLine()) != null) System.out.println(line);
     }
+
+    /*
     // Метод для вывода информации о коллекции
     public void info() {
         System.out.println("Тип коллекции: ArrayList<LabWork>");
@@ -71,4 +68,5 @@ public class LabworkController {
             System.out.println(labwork);
         }
     }
+*/
 }

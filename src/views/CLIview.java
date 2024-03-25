@@ -4,16 +4,24 @@ import controllers.LabworkController;
 import models.Labwork;
 import java.util.Collection;
 import java.util.*;
+import java.io.IOException;
 
 public class CLIview {
     LabworkController labworkController;
 
     public void startIntro() { //начальное сообщение с приглашением к выбору команды
         System.out.println(
-                "Выберите команду из списка. \n\n" +
-                        "show\n" +
-                        "save\n"
-        );
+            "Выберите команду из списка. \n\n" +
+                "help : вывести справку по доступным командам\n" +
+                "save : сохранить коллекцию в файл\n" +
+                "info : вывести в стандартный поток вывода информацию о коллекции (тип,\n" +
+                "дата инициализации, количество элементов и т.д.)\n" +
+                "show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n" +
+                "add: добавить новый элемент в коллекцию\n" +
+                "update {id}: обновить значение элемента коллекции, id которого равен заданному" +
+                "remove_by_id {id }: удалить элемент из коллекции по его id" +
+                "clear : очистить коллекцию\n" +
+                "exit : завершить программу (без сохранения в файл)\n");
         System.out.print("Введите выбранную команду: ");
     }
 
@@ -45,19 +53,31 @@ public class CLIview {
             }
 
             switch (usersLine) {
+                case "help":
+                    try {
+                        if (filepath == null) {
+                            throw new IllegalArgumentException("Файл не найден");
+                        }
+                        labworkController.HelpRead();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
                 case "save":
                     this.startSaveCommand();
                     break;
-
                 case "show":
                     this.startShowCommand();
                     break;
-
+                case "clear":
+                    this.startClearCommand();
+                    break;
+                case "exit":
+                    break;
                 default:
                     System.out.println("Вы ввели неверную команду. Попробуйте ещё раз: ");
                     continue;
             }
-
         } while (!usersLine.equals("exit"));
     }
 
@@ -71,5 +91,10 @@ public class CLIview {
     public void startSaveCommand() {
         System.out.println("Сохраняем элементы...");
         this.labworkController.handleSaveCommand();
+    }
+
+    public void startClearCommand() {
+        System.out.println("Очищаем элементы...");
+        this.labworkController.handleClearCommand();
     }
 }
