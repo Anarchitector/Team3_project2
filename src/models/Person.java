@@ -18,6 +18,8 @@ public class Person {
         return this.name;
     }
 
+    public void setName(String name) { this.name = name; }
+    /*
     public void setName(String name) {
         try {
             if (name == null || name.isEmpty()) {
@@ -28,8 +30,7 @@ public class Person {
         } catch (IllegalArgumentException var3) {
             System.err.println(var3.getMessage());
         }
-
-    }
+*/
 
     public void validateName(String name) throws Exception {
         if (name == null || name.isEmpty()) {
@@ -43,6 +44,13 @@ public class Person {
 
     public void setPassportID(String passportID) {
         this.passportID = passportID;
+    }
+
+    public void validatePass(String pass) throws Exception {
+        //Здесь должна быть описана проверка на наличие номера паспорта в базе данных
+        if (pass.equals("xxx")) {
+            throw new Exception("Введенный ID паспорта уже существует");
+        }
     }
 
     public String toString() {
